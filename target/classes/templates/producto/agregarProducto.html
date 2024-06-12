@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Stock</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Stock</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Productos</a></li>
+            <li><a href="#">Agregar Producto</a></li>
+            <li><a href="#">Reporte</a></li>
+        </ul>
+    </nav>
+    
+    <main>     
+        <section id="add-product">
+            <h2>Agregar Nuevo Producto</h2>
+            <form id="addProductForm">
+                <label for="productName">Nombre del Producto:</label>
+                <input type="text" id="productName" name="productName" required>
+                
+                <label for="productCategory">Categoría:</label>
+                <input type="text" id="productCategory" name="productCategory" required>
+                
+                <label for="productQuantity">Cantidad:</label>
+                <input type="number" id="productQuantity" name="productQuantity" required>
+                
+                <label for="productPrice">Precio:</label>
+                <input type="number" id="productPrice" name="productPrice" required>
+                
+                <button type="submit">Agregar Producto</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Sistema de Stock. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

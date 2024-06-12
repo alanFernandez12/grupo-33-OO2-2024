@@ -20,7 +20,7 @@ public class HomeController {
 		//modelAndView.addObject("username", user.getUsername());
 		return modelAndView;
 	}
-
+	
 	@GetMapping("/hello/{name}")
 	public ModelAndView helloParams2(@PathVariable("name") String name) {
 		ModelAndView mV = new ModelAndView(ViewRouteHelper.HELLO);
