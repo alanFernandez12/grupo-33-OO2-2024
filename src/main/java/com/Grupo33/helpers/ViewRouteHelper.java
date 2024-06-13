@@ -13,4 +13,7 @@ public class ViewRouteHelper {
 	/**** Redirects ****/
 	public final static String ROUTE = "/index";
 	
+	//Producto
+	public final static String AgregarProducto = "/producto/agregarProducto";
+	
 }

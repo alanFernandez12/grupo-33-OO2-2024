@@ -13,7 +13,7 @@
     
     <nav>
         <ul>
-            <li><a href="#">Inicio</a></li>
+            <li><a th:href="@{/index}">Inicio</a></li>
             <li><a href="#">Productos</a></li>
             <li><a href="#">Agregar Producto</a></li>
             <li><a href="#">Reporte</a></li>
@@ -23,7 +23,9 @@
     <main>     
         <section id="add-product">
             <h2>Agregar Nuevo Producto</h2>
-            <form id="addProductForm">
+            <form id="addProductForm" action="#" th:action="@{/producto/listaProducto}"
+				th:object = "${producto}" method="post">
+				
                 <label for="productName">Nombre del Producto:</label>
                 <input type="text" id="productName" name="productName" required>
                 
