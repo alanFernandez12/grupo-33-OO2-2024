@@ -9,10 +9,10 @@ import com.Grupo33.entities.Producto;
 
 
 @Repository("ProductoRepository")
-public interface IProductoRepository extends JpaRepository<Producto,Serializable> {
+public interface IProductoRepository extends JpaRepository<Producto,Integer> {
 
 	public abstract Producto findByNombre(String nombre);
 	
-	public abstract Producto getById(long id);
+	public abstract Producto getById(int id);
 
 }

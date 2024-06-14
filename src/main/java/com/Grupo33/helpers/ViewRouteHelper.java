@@ -15,5 +15,6 @@ public class ViewRouteHelper {
 	
 	//Producto
 	public final static String AgregarProducto = "/producto/agregarProducto";
+	public final static String ListaProducto= "/producto/listaProducto";
 	
 }

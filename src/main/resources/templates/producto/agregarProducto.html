@@ -13,30 +13,28 @@
     
     <nav>
         <ul>
-            <li><a th:href="@{/index}">Inicio</a></li>
-            <li><a href="#">Productos</a></li>
-            <li><a href="#">Agregar Producto</a></li>
-            <li><a href="#">Reporte</a></li>
+			  <li><a th:href="@{/index}">Inicio</a></li>
+			  <li><a href="#">Stock</a></li>
+			  <li><a th:href="@{/producto/agregar}">Agregar Productos</a></li>
+			  <li><a th:href="@{/producto/listaProductos}">Productos</a></li>
+			  <li><a href="#">Informe</a></li>
         </ul>
     </nav>
     
     <main>     
         <section id="add-product">
             <h2>Agregar Nuevo Producto</h2>
-            <form id="addProductForm" action="#" th:action="@{/producto/listaProducto}"
+            <form id="addProductForm" action="#" th:action="@{/producto/nuevoProducto}"
 				th:object = "${producto}" method="post">
 				
                 <label for="productName">Nombre del Producto:</label>
-                <input type="text" id="productName" name="productName" required>
+                <input type="text" id="productName" name="productName" required th:field="*{nombre}">
                 
-                <label for="productCategory">Categoría:</label>
-                <input type="text" id="productCategory" name="productCategory" required>
-                
-                <label for="productQuantity">Cantidad:</label>
-                <input type="number" id="productQuantity" name="productQuantity" required>
-                
+                <label for="productCodigo">Código:</label>
+                <input type="text" id="productCategory" name="productCodigo" required th:field="*{codigo}">
+                             
                 <label for="productPrice">Precio:</label>
-                <input type="number" id="productPrice" name="productPrice" required>
+                <input type="number" id="productPrice" name="productPrice" required th:field="*{precio}">
                 
                 <button type="submit">Agregar Producto</button>
             </form>

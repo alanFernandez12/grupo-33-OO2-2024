@@ -6,12 +6,14 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import com.Grupo33.entities.Producto;
 import com.Grupo33.models.ProductoModelo;
 import com.Grupo33.repositories.IProductoRepository;
 import com.Grupo33.services.IProductoService;
 
+@Service("productoService")
 public class ProductoService implements IProductoService {
 	
 	@Autowired
