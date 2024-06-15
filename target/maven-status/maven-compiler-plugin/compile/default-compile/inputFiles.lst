@@ -1,0 +1,15 @@
+C:\Users\Alan\Desktop\TPPOB2\grupo-33-OO2-2024\src\main\java\com\Grupo33\Application.java
+C:\Users\Alan\Desktop\TPPOB2\grupo-33-OO2-2024\src\main\java\com\Grupo33\configuration\SecurityConfiguration.java
+C:\Users\Alan\Desktop\TPPOB2\grupo-33-OO2-2024\src\main\java\com\Grupo33\controllers\HomeController.java
+C:\Users\Alan\Desktop\TPPOB2\grupo-33-OO2-2024\src\main\java\com\Grupo33\controllers\ProductoController.java
+C:\Users\Alan\Desktop\TPPOB2\grupo-33-OO2-2024\src\main\java\com\Grupo33\controllers\UserController.java
+C:\Users\Alan\Desktop\TPPOB2\grupo-33-OO2-2024\src\main\java\com\Grupo33\entities\Producto.java
+C:\Users\Alan\Desktop\TPPOB2\grupo-33-OO2-2024\src\main\java\com\Grupo33\entities\User.java
+C:\Users\Alan\Desktop\TPPOB2\grupo-33-OO2-2024\src\main\java\com\Grupo33\entities\UserRole.java
+C:\Users\Alan\Desktop\TPPOB2\grupo-33-OO2-2024\src\main\java\com\Grupo33\helpers\ViewRouteHelper.java
+C:\Users\Alan\Desktop\TPPOB2\grupo-33-OO2-2024\src\main\java\com\Grupo33\models\ProductoModelo.java
+C:\Users\Alan\Desktop\TPPOB2\grupo-33-OO2-2024\src\main\java\com\Grupo33\repositories\IProductoRepository.java
+C:\Users\Alan\Desktop\TPPOB2\grupo-33-OO2-2024\src\main\java\com\Grupo33\repositories\IUserRepository.java
+C:\Users\Alan\Desktop\TPPOB2\grupo-33-OO2-2024\src\main\java\com\Grupo33\services\implementation\ProductoService.java
+C:\Users\Alan\Desktop\TPPOB2\grupo-33-OO2-2024\src\main\java\com\Grupo33\services\implementation\UserService.java
+C:\Users\Alan\Desktop\TPPOB2\grupo-33-OO2-2024\src\main\java\com\Grupo33\services\IProductoService.java

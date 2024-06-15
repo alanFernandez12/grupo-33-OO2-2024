@@ -31,7 +31,7 @@ public class UserService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		com.Grupo33.entities.User user = userRepository.findByUsernameAndFetchUserRolesEagerly(username);
 		return buildUser(user, buildGrantedAuthorities(user.getUserRoles()));
-	}
+	} 
 
 	private User buildUser(com.Grupo33.entities.User user, List<GrantedAuthority> grantedAuthorities) {
 		return new User(user.getUsername(), user.getPassword(), user.isEnabled(),
