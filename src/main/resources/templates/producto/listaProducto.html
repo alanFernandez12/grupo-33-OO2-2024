@@ -50,22 +50,38 @@
 						<td th:text="${producto.precio}"></td>
 								
 						<td>
-                            <a class="action-button edit-button">Modificar</a>
-                            <a class="action-button delete-button">Eliminar</a>
-						</td>
-						
+                            <a class="action-button edit-button"   th:href="@{/producto/editarProducto{idProducto}(idProducto=${producto.idProducto})}">Modificar</a>
+							<a class="action-button delete-button" th:href="@{/producto/eliminarProducto{idProducto}(idProducto=${producto.idProducto})}">Eliminar</a>
+						</td>						  
 					</tr>
                 </tbody>
             </table>
         </section>
 
         
-    </main>
 
     <footer>
         <p>&copy; 2024 Sistema de Stock. Todos los derechos reservados.</p>
     </footer>
 
     <script src="script.js"></script>
+	<script>
+		function confirmarEliminacion(idProducto) {
+		      if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
+		          fetch('/producto/listaProductos/eliminarProducto' + idProducto, { method: 'GET' })
+		              .then(function(response) {
+		                  if (response.ok) {
+		                      window.location.href = '/producto/listaProductos';
+		                  } else {
+		                      alert('Error al eliminar el producto');
+		                  }
+		              })
+		              .catch(function(error) {
+		                  alert('Error al eliminar el producto: ' + error.message);
+		              });
+		      }
+		  }
+	</script>
+	</html>
 </body>
-</html>
+

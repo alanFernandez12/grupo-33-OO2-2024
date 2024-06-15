@@ -25,26 +25,26 @@
     <main>
 		<section id="edit-product">
            <h2>Editar Producto</h2>
-           <form id="editProductForm" th:action="@{/producto/listaProductos}" th: object="${producto}" method="post">
+           <form id="editProductForm" th:action="@{/producto/editarProducto{idProducto}/guardar(idProducto=*{idProducto})}" th:object="${producto}" method="post">
                <input type="hidden" id="editProductId" name="productId" th:value="${producto.idProducto}">
                
 			   <label for="editProductCodigo">Codigo:</label>
-               <input type="number" id="editProductCodigo" name="productCodigo" th:value="${producto.codigo}" required>
+               <input type="number" id="editProductCodigo" name="productCodigo" th:field="*{codigo}">
 			                  
                <label for="editProductName">Nombre del Producto:</label>
-               <input type="text" id="editProductName" name="productName" th:value="${producto.nombre}" required>
+               <input type="text" id="editProductName" name="productName" th:field="*{nombre}">
                
-               <label for="editProductCategory">Descripcion:</label>
-               <input type="text" id="editProductDescripcion" name="productDescripcion" th:value="${producto.descripcion}" required>
+               <label for="editProductDescripcion">Descripcion:</label>
+               <input type="text" id="editProductDescripcion" name="productDescripcion" th:field="*{descripcion}">
                
-               <label for="editProductQuantity">Categoria:</label>
-               <input type="text" id="editCategoria" name="productCategoria" th:value="${producto.categoria}" required>
+               <label for="editProductCategory">Categoria:</label>
+               <input type="text" id="editCategoria" name="productQuantity" th:field="*{categoria}">
                
                <label for="editProductPrice">Precio:</label>
-               <input type="number" id="editProductPrice" name="productPrice" th:value="${producto.precio}" required>
+               <input type="number" id="editProductPrice" name="productPrice" th:field="*{precio}" >
                
-			   <label for="editProductPrice">Costo:</label>
-			    <input type="number" id="editProductCosto" name="productCosto" th:value="${producto.costo}" required>
+			   <label for="editProductCosto">Costo:</label>
+			    <input type="number" id="editProductCosto" name="productCosto" th:field="*{costo}" >
               
 				 <button type="submit">Guardar Cambios</button>
            </form>

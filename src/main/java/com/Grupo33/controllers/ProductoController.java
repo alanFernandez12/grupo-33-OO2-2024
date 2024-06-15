@@ -18,6 +18,7 @@ import com.Grupo33.helpers.ViewRouteHelper;
 import com.Grupo33.models.ProductoModelo;
 import com.Grupo33.services.IProductoService;
 
+
 @Controller
 @RequestMapping("/producto")
 public class ProductoController {
@@ -60,12 +61,31 @@ public class ProductoController {
 		return mv;
 	}
 	
-//	@GetMapping("/EditarProducto{idProducto}")
-//	public ModelAndView editarProducto(@PathVariable int id,Model model) {
-//		Producto p = productoService.getById(id);
-//		model.addAttribute("producto",modelMapper.map(p, ProductoModelo.class));
-//		
-//		return 
-//	}
-//	
+	@GetMapping("/editarProducto{idProducto}")
+	public String editarProducto(@PathVariable int idProducto,Model model) {
+		Producto p = productoService.getById(idProducto);
+		model.addAttribute("producto",modelMapper.map(p, ProductoModelo.class));
+		
+		return ViewRouteHelper.ModificarProducto;
+	}
+	
+	@PostMapping("/editarProducto{idProducto}/guardar")
+	public ModelAndView ModificarProducto(@PathVariable int idProducto, @ModelAttribute("producto") ProductoModelo productoM) {
+		
+		productoService.insertOrUpdate(modelMapper.map(productoM, Producto.class));
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName(ViewRouteHelper.ListaProducto);
+		mv.addObject("productos",productoService.getAll());
+		return mv;
+	}
+	
+	@GetMapping("/eliminarProduto{idPruducto}")
+	public String eliminarProducto(@PathVariable("idProducto") int idProducto) {
+		
+		productoService.remove(idProducto);
+//		ModelAndView mv=new ModelAndView();
+//		mv.setViewName(ViewRouteHelper.ListaProducto);
+//		mv.addObject("productos",productoService.getAll());
+		return "redirect:/producto/listaProductos";
+	}
 }

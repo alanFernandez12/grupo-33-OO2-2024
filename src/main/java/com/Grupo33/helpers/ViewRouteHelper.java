@@ -14,7 +14,7 @@ public class ViewRouteHelper {
 	public final static String ROUTE = "/index";
 	
 	//Producto
-	public final static String AgregarProducto = "/producto/agregarProducto";
-	public final static String ListaProducto= "/producto/listaProducto";
-	
+	public final static String AgregarProducto   = "/producto/agregarProducto";
+	public final static String ListaProducto     = "/producto/listaProducto";
+	public final static String ModificarProducto = "/producto/modificarProducto";
 }
