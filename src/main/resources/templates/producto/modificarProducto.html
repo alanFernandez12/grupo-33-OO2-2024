@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Stock</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Stock</h1>
+		<a id="logoutButton" th:href="@{/logout}">Logout</a>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a th:href="@{/index}">Inicio</a></li>
+            <li><a href="#">Stock</a></li>
+            <li><a th:href="@{/producto/agregar}">Gestionar Productos</a></li>
+            <li><a th:href="@{/producto/listaProductos}">Productos</a></li>
+			<li><a href="#">Informe</a></li>
+        </ul>
+    </nav>
+	
+    <main>
+		<section id="edit-product">
+           <h2>Editar Producto</h2>
+           <form id="editProductForm" th:action="@{/producto/listaProductos}" th: object="${producto}" method="post">
+               <input type="hidden" id="editProductId" name="productId" th:value="${producto.idProducto}">
+               
+			   <label for="editProductCodigo">Codigo:</label>
+               <input type="number" id="editProductCodigo" name="productCodigo" th:value="${producto.codigo}" required>
+			                  
+               <label for="editProductName">Nombre del Producto:</label>
+               <input type="text" id="editProductName" name="productName" th:value="${producto.nombre}" required>
+               
+               <label for="editProductCategory">Descripcion:</label>
+               <input type="text" id="editProductDescripcion" name="productDescripcion" th:value="${producto.descripcion}" required>
+               
+               <label for="editProductQuantity">Categoria:</label>
+               <input type="text" id="editCategoria" name="productCategoria" th:value="${producto.categoria}" required>
+               
+               <label for="editProductPrice">Precio:</label>
+               <input type="number" id="editProductPrice" name="productPrice" th:value="${producto.precio}" required>
+               
+			   <label for="editProductPrice">Costo:</label>
+			    <input type="number" id="editProductCosto" name="productCosto" th:value="${producto.costo}" required>
+              
+				 <button type="submit">Guardar Cambios</button>
+           </form>
+       </section>
+
+    </main>
+
+    <footer>
+        <p>TPC GRUPO 33 UNLA</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

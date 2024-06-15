@@ -9,13 +9,14 @@
 <body>
     <header>
         <h1>Sistema de Stock</h1>
+		<a id="logoutButton" th:href="@{/logout}">Logout</a>
     </header>
     
     <nav>
         <ul>
 		   <li><a th:href="@{/index}">Inicio</a></li>
            <li><a href="#">Stock</a></li>
-           <li><a th:href="@{/producto/agregar}">Agregar Productos</a></li>
+           <li><a th:href="@{/producto/agregar}">Gestionar Productos</a></li>
            <li><a th:href="@{/producto/listaProductos}">Productos</a></li>
 		   <li><a href="#">Informe</a></li>
         </ul>
@@ -28,8 +29,11 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+						<th>Código</th>
                         <th>Nombre</th>
-                        <th>Código</th>                  
+						<th>Descripcion</th>
+						<th>Categoria</th>
+						<th>Costo</th>                  
                         <th>Precio</th>
                     </tr>
                 </thead>
@@ -38,9 +42,17 @@
 					<tr th:each="producto : ${productos}">
 						
 						<td th:text="${producto.idProducto}"></td>
-						<td th:text="${producto.nombre}"></td>
 						<td th:text="${producto.codigo}"></td>
-						<td th:text="${producto.precio}"></td>		
+						<td th:text="${producto.nombre}"></td>
+						<td th:text="${producto.descripcion}"></td>
+						<td th:text="${producto.categoria}"></td>
+						<td th:text="${producto.costo}"></td>
+						<td th:text="${producto.precio}"></td>
+								
+						<td>
+                            <a class="action-button edit-button">Modificar</a>
+                            <a class="action-button delete-button">Eliminar</a>
+						</td>
 						
 					</tr>
                 </tbody>

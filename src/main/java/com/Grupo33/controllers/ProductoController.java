@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -58,4 +59,13 @@ public class ProductoController {
 		mv.addObject("productos",productoService.getAll());	
 		return mv;
 	}
+	
+//	@GetMapping("/EditarProducto{idProducto}")
+//	public ModelAndView editarProducto(@PathVariable int id,Model model) {
+//		Producto p = productoService.getById(id);
+//		model.addAttribute("producto",modelMapper.map(p, ProductoModelo.class));
+//		
+//		return 
+//	}
+//	
 }

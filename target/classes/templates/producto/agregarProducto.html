@@ -9,13 +9,14 @@
 <body>
     <header>
         <h1>Sistema de Stock</h1>
+		<a id="logoutButton" th:href="@{/logout}">Logout</a>
     </header>
     
     <nav>
         <ul>
 			  <li><a th:href="@{/index}">Inicio</a></li>
 			  <li><a href="#">Stock</a></li>
-			  <li><a th:href="@{/producto/agregar}">Agregar Productos</a></li>
+			  <li><a th:href="@{/producto/agregar}">Gestionar Productos</a></li>
 			  <li><a th:href="@{/producto/listaProductos}">Productos</a></li>
 			  <li><a href="#">Informe</a></li>
         </ul>
@@ -26,13 +27,21 @@
             <h2>Agregar Nuevo Producto</h2>
             <form id="addProductForm" action="#" th:action="@{/producto/nuevoProducto}"
 				th:object = "${producto}" method="post">
+				<label for="productCodigo">Código:</label>
+				<input type="text" id="productCategory" name="productCodigo" required th:field="*{codigo}">
 				
                 <label for="productName">Nombre del Producto:</label>
                 <input type="text" id="productName" name="productName" required th:field="*{nombre}">
-                
-                <label for="productCodigo">Código:</label>
-                <input type="text" id="productCategory" name="productCodigo" required th:field="*{codigo}">
-                             
+				
+				<label for="productPrice">Descripcion: </label>
+				 <input type="text" id="productPrice" name="productPrice" required th:field="*{descripcion}">
+				 
+				 <label for="productPrice">Categoria: </label>
+				 <input type="text" id="productPrice" name="productPrice" required th:field="*{categoria}">
+				 
+				 <label for="productPrice">Costo:</label>
+				 <input type="number" id="productPrice" name="productPrice" required th:field="*{costo}">
+                                         
                 <label for="productPrice">Precio:</label>
                 <input type="number" id="productPrice" name="productPrice" required th:field="*{precio}">
                 

@@ -100,3 +100,46 @@ footer {
     bottom: 0;
     width: 100%;
 }
+#logoutButton {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#logoutButton:hover {
+    background-color: #ff1a1a;
+}
+.action-button {
+    padding: 5px 10px;
+    margin: 2px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.edit-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #45a049;
+}
+
+.delete-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #e53935;
+}
