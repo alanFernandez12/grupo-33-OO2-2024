@@ -1,0 +1,15 @@
+com\Grupo33\Application.class
+com\Grupo33\repositories\IUserRepository.class
+com\Grupo33\services\implementation\ProductoService.class
+com\Grupo33\services\IProductoService.class
+com\Grupo33\repositories\IProductoRepository.class
+com\Grupo33\entities\Producto.class
+com\Grupo33\controllers\HomeController.class
+com\Grupo33\controllers\UserController.class
+com\Grupo33\services\implementation\UserService.class
+com\Grupo33\entities\User.class
+com\Grupo33\controllers\ProductoController.class
+com\Grupo33\entities\UserRole.class
+com\Grupo33\helpers\ViewRouteHelper.class
+com\Grupo33\configuration\SecurityConfiguration.class
+com\Grupo33\models\ProductoModelo.class
