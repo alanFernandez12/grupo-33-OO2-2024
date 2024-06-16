@@ -79,13 +79,15 @@ public class ProductoController {
 		return mv;
 	}
 	
-	@GetMapping("/eliminarProduto{idPruducto}")
-	public String eliminarProducto(@PathVariable("idProducto") int idProducto) {
+	@GetMapping("/eliminarProduto/{idProducto}")
+	public ModelAndView eliminarProducto(@PathVariable int idProducto) {
 		
 		productoService.remove(idProducto);
-//		ModelAndView mv=new ModelAndView();
-//		mv.setViewName(ViewRouteHelper.ListaProducto);
-//		mv.addObject("productos",productoService.getAll());
-		return "redirect:/producto/listaProductos";
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName(ViewRouteHelper.ListaProducto);
+		mv.addObject("productos",productoService.getAll());
+
+		return mv;
+		
 	}
 }
