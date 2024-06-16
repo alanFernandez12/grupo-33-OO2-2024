@@ -52,6 +52,8 @@
 						<td>
                             <a class="action-button edit-button"   th:href="@{/producto/editarProducto{idProducto}(idProducto=${producto.idProducto})}">Modificar</a>
 							<a class="action-button delete-button" th:href="@{/producto/eliminarProduto/{idProducto}(idProducto=${producto.idProducto})}" onclick="return confirmDeletion()">Eliminar</a>
+							<a class="action-button detail-button" th:href="@{/producto/detalle/{idProducto}(idProducto=${producto.idProducto})}">Ver Stock</a>
+
 						</td>						  
 					</tr>
                 </tbody>

@@ -143,3 +143,12 @@ footer {
 .delete-button:hover {
     background-color: #e53935;
 }
+.detail-button {
+    background-color: rgb(0, 64, 128); /* Green */
+    color: white;
+    border: none;
+}
+
+.detail-button:hover {
+    background-color: rgb(0, 0, 255);
+}

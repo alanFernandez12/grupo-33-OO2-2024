@@ -17,6 +17,7 @@ import com.Grupo33.entities.Producto;
 import com.Grupo33.helpers.ViewRouteHelper;
 import com.Grupo33.models.ProductoModelo;
 import com.Grupo33.services.IProductoService;
+import com.Grupo33.services.IStockService;
 
 
 @Controller
@@ -28,6 +29,9 @@ public class ProductoController {
 	@Autowired
 	@Qualifier("productoService")
 	private IProductoService productoService;
+	@Autowired
+	@Qualifier("stockService")
+	private IStockService stockService;
 	
 	@GetMapping("/agregar")
 	private String agregarProducto(Model model) {
@@ -90,4 +94,12 @@ public class ProductoController {
 		return mv;
 		
 	}
+	 @GetMapping("/detalle/{idProducto}")
+	    public ModelAndView mostrarDetalleProducto(@PathVariable("idProducto") int idProducto) {
+	        ModelAndView mv = new ModelAndView();
+	        mv.setViewName(ViewRouteHelper.verStockProducto); // El nombre del archivo HTML que acabamos de crear
+	        mv.addObject("stock",stockService.getStocksByProductoId(idProducto)); 
+	        return mv;
+	    }
+	
 }
