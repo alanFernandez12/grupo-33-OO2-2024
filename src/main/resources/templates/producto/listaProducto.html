@@ -16,8 +16,8 @@
         <ul>
 		   <li><a th:href="@{/index}">Inicio</a></li>
            <li><a href="#">Stock</a></li>
-           <li><a th:href="@{/producto/agregar}">Gestionar Productos</a></li>
-           <li><a th:href="@{/producto/listaProductos}">Productos</a></li>
+           <li><a th:href="@{/producto/agregar}">Agregar Productos</a></li>
+           <li><a th:href="@{/producto/listaProductos}">Gestionar Productos</a></li>
 		   <li><a href="#">Informe</a></li>
         </ul>
     </nav>
@@ -51,7 +51,10 @@
 								
 						<td>
                             <a class="action-button edit-button"   th:href="@{/producto/editarProducto{idProducto}(idProducto=${producto.idProducto})}">Modificar</a>
-							<a class="action-button delete-button" th:href="@{/producto/eliminarProducto{idProducto}(idProducto=${producto.idProducto})}">Eliminar</a>
+							<a class="action-button delete-button" th:href="@{/producto/eliminarProduto/{idProducto}(idProducto=${producto.idProducto})}" onclick="return confirmDeletion()">Eliminar</a>
+							<a class="action-button detail-button" th:href="@{/producto/detalle/{idProducto}(idProducto=${producto.idProducto})}">Ver Stock</a>
+							<a class="action-button detail-button" th:href="@{/producto/itemProducto/{idProducto}(idProducto=${producto.idProducto})}">Comprar</a>
+							
 						</td>						  
 					</tr>
                 </tbody>
@@ -66,21 +69,9 @@
 
     <script src="script.js"></script>
 	<script>
-		function confirmarEliminacion(idProducto) {
-		      if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
-		          fetch('/producto/listaProductos/eliminarProducto' + idProducto, { method: 'GET' })
-		              .then(function(response) {
-		                  if (response.ok) {
-		                      window.location.href = '/producto/listaProductos';
-		                  } else {
-		                      alert('Error al eliminar el producto');
-		                  }
-		              })
-		              .catch(function(error) {
-		                  alert('Error al eliminar el producto: ' + error.message);
-		              });
-		      }
-		  }
+		function confirmDeletion() {
+		            return confirm('¿Estás seguro de que deseas eliminar este producto?');
+		        }
 	</script>
 	</html>
 </body>

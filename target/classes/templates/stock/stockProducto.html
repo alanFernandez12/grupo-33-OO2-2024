@@ -23,15 +23,30 @@
     </nav>
 	
     <main>
-        <section id="overview">
-            <h2>Grupo 33</h2>
-            <p>Trabajo Práctico cuatrimestral de Programación orientada a objetos 2</p>
-			<h3>Integrantes :</h3>
-			<p>Fernandez Alan Gabriel</p>
-			<p>Rivero Nahuel</p>
-			<p>Edgar Rios</p>
-        </section>
-
+		<section id="product-detail">
+		          <h2>Stock del Producto</h2>
+		          <table>
+		              <tbody>
+		                  <tr>
+		                      <th>ID</th>
+		                      <td th:text="${stock.idStock}"></td>
+		                  </tr>
+		                  <tr>
+		                      <th>Cantidad</th>
+		                      <td th:text="${stock.cantidad}"></td>
+		                  </tr>
+		                  <tr>
+		                      <th>Cantidad Minima</th>
+		                      <td th:text="${stock.cantidadMin}"></td>
+		                  </tr>
+		                  <tr>
+		                      <th>Almacen</th>
+		                      <td th:text="${stock.almacen}"></td>
+		                  </tr>
+		                 
+		              </tbody>
+		          </table>
+		      </section>
     </main>
 
     <footer>
