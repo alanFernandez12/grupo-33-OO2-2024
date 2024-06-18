@@ -23,36 +23,37 @@
 			<li><a href="#">Informe</a></li>
         </ul>
     </nav>
-	
+    
     <main>
-		<section id="product-detail">
-		          <h2>Stock del Producto</h2>
-		          <table>
-		              <tbody>
-		                  <tr>
-		                      <th>ID</th>
-		                      <td th:text="${stock.idStock}"></td>
-		                  </tr>
-		                  <tr>
-		                      <th>Cantidad</th>
-		                      <td th:text="${stock.cantidad}"></td>
-		                  </tr>
-		                  <tr>
-		                      <th>Cantidad Minima</th>
-		                      <td th:text="${stock.cantidadMin}"></td>
-		                  </tr>
-		                  <tr>
-		                      <th>Almacen</th>
-		                      <td th:text="${stock.almacen}"></td>
-		                  </tr>
-		                 
-		              </tbody>
-		          </table>
-		      </section>
+        <section id="pedido-list">
+            <h2>Pedidos Registrados</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cantidad</th>                  
+                        <th>Proveedor</th>
+						<th>Producto</th>
+                    </tr>
+                </thead>
+                <tbody>		
+					<tr th:each="pedido : ${pedidos}">
+						
+						<td th:text="${pedido.idPedido}"></td>
+						<td th:text="${pedido.cantidad}"></td>
+						<td th:text="${pedido.proveedor}"></td>
+						<td th:text="${pedido.producto.nombre}"></td>		
+						
+					</tr>
+                </tbody>
+            </table>
+        </section>
+
+        
     </main>
 
     <footer>
-        <p>TPC GRUPO 33 UNLA</p>
+        <p>&copy; 2024 Sistema de Stock. Todos los derechos reservados.</p>
     </footer>
 
     <script src="script.js"></script>
