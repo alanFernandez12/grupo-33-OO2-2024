@@ -18,5 +18,18 @@ public class ViewRouteHelper {
 	public final static String ListaProducto     = "/producto/listaProducto";
 	public final static String ModificarProducto = "/producto/modificarProducto";
 	public final static String verStockProducto = "/stock/stockProducto";
+
 	public final static String ItemProducto = "/producto/itemProducto";
+
+	
+	//Stock
+	public final static String verStock = "/stock/listaStock";
+	
+	//Lote
+	public final static String AgregarLote = "/lote/agregarLote";
+	public final static String ListaLote= "/lote/listaLote";
+	
+	//venta
+	public final static String verCarrito = "/venta/carrito";
+
 }

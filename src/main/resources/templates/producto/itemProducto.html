@@ -44,7 +44,7 @@
 				                 <tr>
 				                      <th><label for="cantidad">Cantidad</label></th>
 				                      <td >
-											<input type="number" id="cantidad" name="cantidad" th:field="*{cantidad}" value="0" min="0" onchange="calcularSubtotal()">
+											<input type="number" id="cantidad" name="cantidad" value="0" min="0" onchange="calcularSubtotal()">
 									  </td>
 				                 </tr>
 								  <tr>
@@ -56,7 +56,10 @@
 				          </table>
 						  <button type="submit" class="btn-add-to-cart">Comprar</button>
 					</form>
-				      </section>
+	  </section>
+	  <div th:if="${mensajeError}" style="color: red;">
+	     <p th:text="${mensajeError}"></p>
+	  </div>
     </main>
 
     <footer>

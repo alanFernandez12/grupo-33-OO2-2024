@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Carrito de Compras</h1>
+		<a id="logoutButton" th:href="@{/logout}">Logout</a>
+    </header>
+    
+    <nav>
+        <ul>
+			<li><a th:href="@{/index}">Inicio</a></li>
+            <li><a th:href="@{/stock/listaStock}">Stock</a></li>
+            <li><a th:href="@{/producto/agregar}">Agregar Productos</a></li>
+            <li><a th:href="@{/producto/listaProductos}"> Gestionar Productos</a></li>
+			<li><a th:href="@{/lote/agregarLote}">Agregar Lote</a></li>
+			<li><a href="#">Carrito</a></li>
+        </ul>
+    </nav>
+	
+    <main>
+		<section id="cart">
+			<h2>Carrito de Compras</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Producto</th>
+						<th>Cantidad</th>
+						<th>Precio Unitario</th>
+						<th>Subtotal</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="item : ${itemVenta}">
+						<td th:text="${item.producto.nombre}"></td>
+						<td th:text="${item.cantidad}"></td>
+						<td th:text="${item.producto.precio}"></td>
+						<td th:text="${item.subPrecio}"></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="total">
+				<p>Total: <span id="total"></span></p>
+			</div>
+			<button type="button" class="btn-checkout" onclick="confirmarCompra()">Realizar Compra</button>
+		</section>
+    </main>
+
+    <footer>
+        <p>TPC GRUPO 33 UNLA</p>
+    </footer>
+
+	<script>
+		function calcularTotal() {
+			var subtotals = document.querySelectorAll('tbody tr td:nth-child(4)');
+			var total = 0;
+			subtotals.forEach(function(subtotal) {
+				total += parseFloat(subtotal.innerText);
+			});
+			document.getElementById('total').innerText = total.toFixed(2);
+		}
+
+		function confirmarCompra() {
+			alert("Compra realizada con éxito.");
+		}
+
+
+		window.onload = calcularTotal;
+	</script>
+    <script src="script.js"></script>
+</body>
+</html>

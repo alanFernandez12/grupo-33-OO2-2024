@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Stock</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Stock</h1>
+		<a id="logoutButton" th:href="@{/logout}">Logout</a>
+    </header>
+    
+    <nav>
+        <ul>
+			  <li><a th:href="@{/index}">Inicio</a></li>
+			  <li><a href="#">Stock</a></li>
+			  <li><a th:href="@{/producto/agregar}">Agregar Productos</a></li>
+			  <li><a th:href="@{/producto/listaProductos}">Productos</a></li>
+			  <li><a th:href="@{/lote/agregarLote}">Agregar Lote</a></li>
+			  <li><a href="#">Informe</a></li>
+        </ul>
+    </nav>
+    
+    <main>     
+        <section id="add-lote">
+            <h2>Agregar Nuevo Lote</h2>
+            <form id="addLoteForm" action="#" th:action="@{/lote/nuevoLote}" th:object = "${lote}" method="post">	
+				<label for="Producto">Producto:</label>
+				<select th:field="${lote.producto}">
+				    <option value="">Selecciona un producto</option>
+						   <option th:each="producto : ${productos}" th:value="${producto.idProducto}" th:text="${producto.nombre}" ></option>
+				</select><br><br>
+						
+				<label for="proveedor">Proveedor:</label>
+                <input type="text" id="proveedor" name="proveedor" required th:field="${lote.proveedor}">
+							
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" required th:field="${lote.cantidad}">  
+				      
+				<label for="fechaRecepcion">Fecha de Recepción:</label>
+				<input type="date" id="fechaRecepcion" name="fechaRecepcion" required th:field="${lote.fechaRecepcion}">
+				<!--			     
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio" required th:field="${lote.precio}">
+				-->
+                
+                <button type="submit">Agregar Lote</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Sistema de Stock. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

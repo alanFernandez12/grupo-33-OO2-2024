@@ -1,5 +1,7 @@
 package com.Grupo33.controllers;
 
+import java.time.LocalDate;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,15 +13,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Grupo33.entities.Producto;
 import com.Grupo33.entities.Stock;
+import com.Grupo33.entities.Venta;
 import com.Grupo33.helpers.ViewRouteHelper;
 import com.Grupo33.models.ProductoModelo;
 import com.Grupo33.models.StockModelo;
+import com.Grupo33.services.IItemVentaService;
 import com.Grupo33.services.IProductoService;
 import com.Grupo33.services.IStockService;
+import com.Grupo33.services.IVentaService;
+import com.Grupo33.entities.ItemVenta;
 
 
 @Controller
@@ -34,6 +41,15 @@ public class ProductoController {
 	@Autowired
 	@Qualifier("stockService")
 	private IStockService stockService;
+	
+	@Autowired
+	@Qualifier("ventaService")
+	private IVentaService ventaService;
+
+	@Autowired
+	@Qualifier("itemVentaService")
+	private IItemVentaService itemVentaService;
+	
 	
 	@GetMapping("/agregar")
 	private String agregarProducto(Model model) {
@@ -117,15 +133,52 @@ public class ProductoController {
 	 }
 	
 	 @PostMapping("/itemProducto/{idStock}/venta")
-	 public ModelAndView generarVenta(@PathVariable("idStock") int idStock,@ModelAttribute("stock") StockModelo stockModelo) {
-		 
+	 public ModelAndView generarVenta(@RequestParam("cantidad") int cantidad, @PathVariable("idStock") int idStock,@ModelAttribute("stock") StockModelo stockModelo,Model model) {
+		 ModelAndView mv=new ModelAndView();
+		 int existe = 0;
+		
 		Stock stock = stockService.getById(idStock);
-		int cantidad = stock.getCantidad();
-		stock.setCantidad(cantidad - stockModelo.getCantidad());
+		Producto producto = stock.getProducto();
+		
+		if(cantidad > stock.getCantidad()) {
+			mv.setViewName(ViewRouteHelper.ItemProducto);
+			mv.addObject("mensajeError", "No se puede comprar más cantidad de los disponibles en stock.");
+			mv.addObject("stock",stockService.getStocksByProductoId(producto.getIdProducto()));
+			return mv;
+		}
+		
+		//verifica si ya hay un producto en el carrito para subirle la cantidad
+		for (ItemVenta item : itemVentaService.getAll()) {
+			
+			if (item.getProducto().equals(producto)) {
+				
+//				item.setCantidad(item.getCantidad() + stockModelo.getCantidad());
+				item.setCantidad(item.getCantidad() + cantidad);
+				double subprecio = item.getCantidad()* stock.getProducto().getPrecio();
+				
+				item.setSubPrecio(subprecio);
+				itemVentaService.insertOrUpdate(item);
+				
+				 existe = 1;
+			}
+			
+		}
+		
+		// si no existe el producto crea un item Nuevo
+		if (existe != 1) {
+			
+		double subprecio = cantidad * stock.getProducto().getPrecio();
+		 ItemVenta itemVenta= new ItemVenta(producto,cantidad,subprecio,LocalDate.now());		 
+		 itemVentaService.insertOrUpdate(itemVenta);
+		
+	
+		}
+		 
+//		 int cantidad = stock.getCantidad();
+		stock.setCantidad(stock.getCantidad()- cantidad);
 		 stockService.insertOrUpdate(stock);
-		 
-		 
-			ModelAndView mv=new ModelAndView();
+
+			
 			mv.setViewName(ViewRouteHelper.ListaProducto);
 			mv.addObject("productos",productoService.getAll());
 
