@@ -1,9 +1,14 @@
 package com.Grupo33.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,8 +27,8 @@ public class Producto {
 	private String categoria;
 	private double costo;
 	private double precio;
-	
-
+	@OneToMany(mappedBy = "producto", cascade = CascadeType.ALL , orphanRemoval = true)
+	private Set<Lote> lotes = new HashSet<>();	
 	
 
 	public Producto() {

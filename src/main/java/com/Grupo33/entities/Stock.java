@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,18 +18,16 @@ public class Stock {
 	private int idStock;
 	private int cantidad;
 	private int cantidadMin;
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "producto_id")
 	private Producto producto;
-	
 	private String almacen;
 	
-	public Stock(int cantidad, int cantidadMin, Producto producto, String almacen) {
+	public Stock(int cantidad, int cantidadMin, Producto producto) {
 		super();
 		this.cantidad = cantidad;
 		this.cantidadMin = cantidadMin;
 		this.producto = producto;
-		this.almacen = almacen;
 	}
 
 	public Stock() {
