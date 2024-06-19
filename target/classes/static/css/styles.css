@@ -100,24 +100,7 @@ footer {
     bottom: 0;
     width: 100%;
 }
-#logoutButton {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 5px;
-}
 
-#logoutButton:hover {
-    background-color: #ff1a1a;
-}
 .action-button {
     padding: 5px 10px;
     margin: 2px;
@@ -183,4 +166,35 @@ footer {
 
 .btn-checkout:hover {
     background-color: #218838;
+}
+
+#header-links {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+}
+
+#logoutButton, #carritoButton {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#logoutButton:hover {
+    background-color: #ff1a1a;
+}
+
+#carritoButton {
+    background-color: green;
+}
+
+#carritoButton:hover {
+    background-color: darkgreen;
 }

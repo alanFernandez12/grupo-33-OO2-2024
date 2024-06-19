@@ -123,10 +123,18 @@ public class ProductoController {
 	 
 	 @GetMapping("/itemProducto/{idProducto}")
 	 public ModelAndView generarItemVenta(@PathVariable("idProducto") int idProducto, Model model) {
-		 
-		 Stock s = new Stock();
-	
 		 ModelAndView mv= new ModelAndView();
+		 Stock s = new Stock();
+		 s = stockService.getStocksByProductoId(idProducto);
+		 
+		 if(s == null || s.getCantidad() ==0) {
+			 mv.setViewName(ViewRouteHelper.ListaProducto);
+			 mv.addObject("mensajeError", "No hay stock Disponible");
+			mv.addObject("productos",productoService.getAll());	
+			return mv;
+		 }
+		 
+		
 		 mv.setViewName(ViewRouteHelper.ItemProducto);
 		 mv.addObject("stock",stockService.getStocksByProductoId(idProducto));
 		 model.addAttribute("stock", new StockModelo());
@@ -140,6 +148,8 @@ public class ProductoController {
 		
 		Stock stock = stockService.getById(idStock);
 		Producto producto = stock.getProducto();
+		
+		
 		
 		if(cantidad > stock.getCantidad()) {
 			mv.setViewName(ViewRouteHelper.ItemProducto);

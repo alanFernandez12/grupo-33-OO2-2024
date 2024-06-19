@@ -35,14 +35,16 @@ public class LoteController {
 	@Qualifier("productoService")
 	private IProductoService productoService;
 	
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	
 	@GetMapping("/agregarLote")
 	private String agregarLote(Model model) {
+
 		model.addAttribute("lote", new LoteModelo());
 		model.addAttribute("productos",productoService.getAll());
 		return ViewRouteHelper.AgregarLote;
+	
 	}
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+
 	@PostMapping("/nuevoLote")
 	public ModelAndView nuevoLote(@ModelAttribute("lote") LoteModelo loteModelo, BindingResult b) {
 		ModelAndView mv=new ModelAndView();
@@ -59,7 +61,7 @@ public class LoteController {
 		
 		return mv;
 	}
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	
 	@GetMapping("/listaLote")
 	public ModelAndView mostrarLote(@ModelAttribute("lote")LoteModelo loteModelo) {
 		ModelAndView mv = new ModelAndView();
