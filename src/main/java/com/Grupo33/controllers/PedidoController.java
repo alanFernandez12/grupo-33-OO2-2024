@@ -37,7 +37,7 @@ public class PedidoController {
 	@Qualifier("productoService")
 	private IProductoService productoService;
 	
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	
 	@GetMapping("/agregarPedido")
 	private String agregarPedido(Model model) {
 		model.addAttribute("pedido", new PedidoModelo());
@@ -62,7 +62,7 @@ public class PedidoController {
 		
 		return mv;
 	}
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	
 	@GetMapping("/pedidosRealizados")
 	public ModelAndView mostrarPedido(@ModelAttribute("pedido")PedidoModelo pedidoModelo) {
 		ModelAndView mv = new ModelAndView();

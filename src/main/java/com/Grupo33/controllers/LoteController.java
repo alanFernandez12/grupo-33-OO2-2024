@@ -38,11 +38,9 @@ public class LoteController {
 	
 	@GetMapping("/agregarLote")
 	private String agregarLote(Model model) {
-
 		model.addAttribute("lote", new LoteModelo());
 		model.addAttribute("productos",productoService.getAll());
 		return ViewRouteHelper.AgregarLote;
-	
 	}
 
 	@PostMapping("/nuevoLote")
