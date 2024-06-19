@@ -137,6 +137,15 @@ public class ProductoController {
 	 @GetMapping("/detalle/{idProducto}")
 	    public ModelAndView mostrarDetalleProducto(@PathVariable("idProducto") int idProducto) {
 	        ModelAndView mv = new ModelAndView();
+	        Stock s = new Stock();
+			 s = stockService.getStocksByProductoId(idProducto);
+			 
+			 if(s == null || s.getCantidad() ==0) {
+				 mv.setViewName(ViewRouteHelper.ListaProducto);
+				 mv.addObject("mensajeError", "No hay stock Disponible");
+				mv.addObject("productos",productoService.getAll());	
+				return mv;
+			 }
 	        mv.setViewName(ViewRouteHelper.verStockProducto); // El nombre del archivo HTML que acabamos de crear
 	        mv.addObject("stock",stockService.getStocksByProductoId(idProducto)); 
 	        return mv;
