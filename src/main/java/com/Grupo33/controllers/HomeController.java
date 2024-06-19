@@ -21,6 +21,15 @@ public class HomeController {
 		return modelAndView;
 	}
 	
+	@GetMapping("/indexCliente")
+	public ModelAndView indexCliente() {
+		
+		//User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		//modelAndView.addObject("username", user.getUsername());
+		ModelAndView modelAndView = new ModelAndView(ViewRouteHelper.INDEX2);
+		return modelAndView;
+	}
+	
 	@GetMapping("/hello/{name}")
 	public ModelAndView helloParams2(@PathVariable("name") String name) {
 		ModelAndView mV = new ModelAndView(ViewRouteHelper.HELLO);

@@ -24,6 +24,8 @@ import com.Grupo33.helpers.ViewRouteHelper;
 import com.Grupo33.models.ProductoModelo;
 import com.Grupo33.models.StockModelo;
 import com.Grupo33.services.IItemVentaService;
+import com.Grupo33.services.ILoteService;
+import com.Grupo33.services.IPedidoService;
 import com.Grupo33.services.IProductoService;
 import com.Grupo33.services.IStockService;
 import com.Grupo33.services.IVentaService;
@@ -35,6 +37,13 @@ import com.Grupo33.entities.ItemVenta;
 public class ProductoController {
 	
 	private ModelMapper modelMapper=new ModelMapper();
+	@Autowired
+	@Qualifier("pedidoService")
+	private IPedidoService pedidoService;
+	
+	@Autowired
+	@Qualifier("loteService")
+	private ILoteService loteService;
 	
 	@Autowired
 	@Qualifier("productoService")
@@ -83,6 +92,13 @@ public class ProductoController {
 		mv.addObject("productos",productoService.getAll());	
 		return mv;
 	}
+	@GetMapping("/listaProductosCliente")
+	public ModelAndView mostrarProductosCliente(@ModelAttribute("producto")ProductoModelo productoM) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName(ViewRouteHelper.ListaProducto);
+		mv.addObject("productos",productoService.getAll());	
+		return mv;
+	}
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/editarProducto{idProducto}")
 	public String editarProducto(@PathVariable int idProducto,Model model) {
@@ -105,6 +121,11 @@ public class ProductoController {
 	@GetMapping("/eliminarProduto/{idProducto}")
 	public ModelAndView eliminarProducto(@PathVariable int idProducto) {
 		
+		Stock s = stockService.getStocksByProductoId(idProducto);
+		
+		if(s != null) {
+		  stockService.remove(s.getIdStock());
+		}
 		productoService.remove(idProducto);
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName(ViewRouteHelper.ListaProducto);

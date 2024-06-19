@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Stock</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+	<header>
+	        <h1>Sistema de Stock</h1>
+			<div id="header-links">
+				<a id="carritoButton" th:href="@{/carrito/verCarrito}">Carrito</a>
+			    <a id="logoutButton" th:href="@{/logout}">Logout</a>
+			           
+			</div>
+		
+	    </header>
+	    
+	    <nav>
+	        <ul>
+	            <li><a th:href="@{/indexCliente}">Inicio</a></li>
+				<li><a th:href="@{/producto/listaProductos}">Productos</a></li>
+	          
+				
+	
+	        </ul>
+	    </nav>
+    
+    <main>
+        <section id="product-list">
+            <h2>Lista de Productos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+						<th>Código</th>
+                        <th>Nombre</th>
+						<th>Descripcion</th>
+						<th>Categoria</th>
+						<th>Costo</th>                  
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Las filas de productos se agregarán aquí 	-->			
+					<tr th:each="producto : ${productos}">
+						
+						<td th:text="${producto.idProducto}"></td>
+						<td th:text="${producto.codigo}"></td>
+						<td th:text="${producto.nombre}"></td>
+						<td th:text="${producto.descripcion}"></td>
+						<td th:text="${producto.categoria}"></td>
+						<td th:text="${producto.costo}"></td>
+						<td th:text="${producto.precio}"></td>
+								
+						<td>
+							<a class="action-button detail-button" th:href="@{/producto/itemProducto/{idProducto}(idProducto=${producto.idProducto})}">Comprar</a>
+                           
+							
+						</td>						  
+					</tr>
+                </tbody>
+            </table>
+        </section>
+		<div th:if="${mensajeError}" style="color: red;">
+			     <p th:text="${mensajeError}"></p>
+			  </div>
+        
+
+    <footer>
+        <p>&copy; 2024 Sistema de Stock. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+	<script>
+		function confirmDeletion() {
+		            return confirm('¿Estás seguro de que deseas eliminar este producto?');
+		        }
+	</script>
+	</html>
+</body>
+
