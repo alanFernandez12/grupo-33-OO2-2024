@@ -168,3 +168,19 @@ footer {
 .btn-add-to-cart:hover {
     background-color: #218838;
 }
+.btn-checkout {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-checkout:hover {
+    background-color: #218838;
+}

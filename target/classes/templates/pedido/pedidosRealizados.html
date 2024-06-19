@@ -14,37 +14,35 @@
     
     <nav>
         <ul>
-			<li><a th:href="@{/index}">Inicio</a></li>
-			<li><a th:href="@{/producto/listaProductos}">Productos</a></li>
-           <li><a th:href="@{/stock/listaStock}">Stock</a></li>
-           <li><a th:href="@{/producto/agregar}">Agregar Productos</a></li>          
-			<li><a th:href="@{/lote/agregarLote}">Agregar Lote</a></li>
-			<li><a th:href="@{/carrito/verCarrito}">Carrito</a></li>
-			<li><a th:href="@{/pedido/agregarPedido}">RegistrarPedido</a></li>
+		<li><a th:href="@{/index}">Inicio</a></li>
+		<li><a th:href="@{/producto/listaProductos}">Productos</a></li>
+       <li><a th:href="@{/stock/listaStock}">Stock</a></li>
+       <li><a th:href="@{/producto/agregar}">Agregar Productos</a></li>          
+		<li><a th:href="@{/lote/agregarLote}">Agregar Lote</a></li>
+		<li><a th:href="@{/carrito/verCarrito}">Carrito</a></li>
+		<li><a th:href="@{/pedido/agregarPedido}">RegistrarPedido</a></li>
         </ul>
     </nav>
     
     <main>
-        <section id="lote-list">
-            <h2>Lista de Lotes</h2>
+        <section id="pedido-list">
+            <h2>Pedidos Registrados</h2>
             <table>
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Cantidad</th>
-                        <th>Precio</th>                  
+                        <th>Cantidad</th>                  
                         <th>Proveedor</th>
 						<th>Producto</th>
                     </tr>
                 </thead>
                 <tbody>		
-					<tr th:each="lote : ${lotes}">
+					<tr th:each="pedido : ${pedidos}">
 						
-						<td th:text="${lote.idLote}"></td>
-						<td th:text="${lote.cantidad}"></td>
-						<td th:text="${lote.precio}"></td>
-						<td th:text="${lote.proveedor}"></td>
-						<td th:text="${lote.producto.nombre}"></td>		
+						<td th:text="${pedido.idPedido}"></td>
+						<td th:text="${pedido.cantidad}"></td>
+						<td th:text="${pedido.proveedor}"></td>
+						<td th:text="${pedido.producto.nombre}"></td>		
 						
 					</tr>
                 </tbody>

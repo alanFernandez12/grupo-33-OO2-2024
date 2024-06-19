@@ -24,34 +24,25 @@
         </ul>
     </nav>
     
-    <main>
-        <section id="lote-list">
-            <h2>Lista de Lotes</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Cantidad</th>
-                        <th>Precio</th>                  
-                        <th>Proveedor</th>
-						<th>Producto</th>
-                    </tr>
-                </thead>
-                <tbody>		
-					<tr th:each="lote : ${lotes}">
+    <main>     
+        <section id="add-pedido">
+            <h2>Agregar Nuevo Lote</h2>
+            <form id="addPedidoForm" action="#" th:action="@{/pedido/nuevoPedido}" th:object = "${pedido}" method="post">	
+				<label for="Producto">Producto:</label>
+				<select th:field="${pedido.producto}">
+				    <option value="">Selecciona un producto</option>
+						   <option th:each="producto : ${productos}" th:value="${producto.idProducto}" th:text="${producto.nombre}" ></option>
+				</select><br><br>
 						
-						<td th:text="${lote.idLote}"></td>
-						<td th:text="${lote.cantidad}"></td>
-						<td th:text="${lote.precio}"></td>
-						<td th:text="${lote.proveedor}"></td>
-						<td th:text="${lote.producto.nombre}"></td>		
-						
-					</tr>
-                </tbody>
-            </table>
+				<label for="proveedor">Proveedor:</label>
+                <input type="text" id="proveedor" name="proveedor" required th:field="${pedido.proveedor}">
+							
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" required th:field="${pedido.cantidad}">  
+				 
+                <button type="submit">Agregar Lote</button>
+            </form>
         </section>
-
-        
     </main>
 
     <footer>

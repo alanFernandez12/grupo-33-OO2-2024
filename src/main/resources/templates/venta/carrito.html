@@ -15,11 +15,12 @@
     <nav>
         <ul>
 			<li><a th:href="@{/index}">Inicio</a></li>
-            <li><a th:href="@{/stock/listaStock}">Stock</a></li>
-            <li><a th:href="@{/producto/agregar}">Agregar Productos</a></li>
-            <li><a th:href="@{/producto/listaProductos}"> Gestionar Productos</a></li>
+			<li><a th:href="@{/producto/listaProductos}">Productos</a></li>
+           <li><a th:href="@{/stock/listaStock}">Stock</a></li>
+           <li><a th:href="@{/producto/agregar}">Agregar Productos</a></li>          
 			<li><a th:href="@{/lote/agregarLote}">Agregar Lote</a></li>
-			<li><a href="#">Carrito</a></li>
+			<li><a th:href="@{/carrito/verCarrito}">Carrito</a></li>
+			<li><a th:href="@{/pedido/agregarPedido}">RegistrarPedido</a></li>
         </ul>
     </nav>
 	
@@ -48,6 +49,12 @@
 				<p>Total: <span id="total"></span></p>
 			</div>
 			<button type="button" class="btn-checkout" onclick="confirmarCompra()">Realizar Compra</button>
+			
+			<form id="compraForm" action="/carrito/verCarrito/compra" method="post" style="display: none;">
+							<input type="hidden" name="parametro1" value="valor1" />
+							<input type="hidden" name="parametro2" value="valor2" />
+						
+			</form>
 		</section>
     </main>
 
@@ -67,6 +74,7 @@
 
 		function confirmarCompra() {
 			alert("Compra realizada con éxito.");
+			document.getElementById('compraForm').submit();
 		}
 
 

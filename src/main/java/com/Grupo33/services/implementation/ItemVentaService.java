@@ -43,7 +43,7 @@ public class ItemVentaService implements IItemVentaService {
 	@Override
 	public boolean remove(int id) {
 		try {
-			itemVentaRepository.deleteById(null);
+			itemVentaRepository.deleteById(id);
 			return true;
 		} catch (Exception e) {
 			// TODO: handle exception

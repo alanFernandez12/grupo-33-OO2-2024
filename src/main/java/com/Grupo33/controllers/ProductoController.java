@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -50,7 +51,7 @@ public class ProductoController {
 	@Qualifier("itemVentaService")
 	private IItemVentaService itemVentaService;
 	
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/agregar")
 	private String agregarProducto(Model model) {
 		model.addAttribute("producto", new ProductoModelo());
@@ -82,7 +83,7 @@ public class ProductoController {
 		mv.addObject("productos",productoService.getAll());	
 		return mv;
 	}
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/editarProducto{idProducto}")
 	public String editarProducto(@PathVariable int idProducto,Model model) {
 		Producto p = productoService.getById(idProducto);
@@ -100,7 +101,7 @@ public class ProductoController {
 		mv.addObject("productos",productoService.getAll());
 		return mv;
 	}
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/eliminarProduto/{idProducto}")
 	public ModelAndView eliminarProducto(@PathVariable int idProducto) {
 		

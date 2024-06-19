@@ -31,8 +31,9 @@ public class Producto {
 	private double precio;
 	@OneToMany(mappedBy = "producto", cascade = CascadeType.ALL , orphanRemoval = true)
 	private Set<Lote> lotes = new HashSet<>();	
+	@OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Pedido> pedidos = new HashSet<>();
 
-	
 
 	public Producto() {
 		

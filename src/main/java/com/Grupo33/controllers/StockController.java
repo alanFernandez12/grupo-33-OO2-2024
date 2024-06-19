@@ -2,6 +2,7 @@ package com.Grupo33.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,6 +21,7 @@ public class StockController {
 	@Qualifier("stockService")
 	private IStockService stockService;
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/listaStock")
 	public ModelAndView mostrarStock(@ModelAttribute("stock")StockModelo stockModelo) {
 		ModelAndView mv = new ModelAndView();

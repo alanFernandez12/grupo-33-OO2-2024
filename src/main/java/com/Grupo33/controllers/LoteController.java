@@ -4,6 +4,7 @@ package com.Grupo33.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,13 +35,14 @@ public class LoteController {
 	@Qualifier("productoService")
 	private IProductoService productoService;
 	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/agregarLote")
 	private String agregarLote(Model model) {
 		model.addAttribute("lote", new LoteModelo());
 		model.addAttribute("productos",productoService.getAll());
 		return ViewRouteHelper.AgregarLote;
 	}
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/nuevoLote")
 	public ModelAndView nuevoLote(@ModelAttribute("lote") LoteModelo loteModelo, BindingResult b) {
 		ModelAndView mv=new ModelAndView();
@@ -57,7 +59,7 @@ public class LoteController {
 		
 		return mv;
 	}
-	
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/listaLote")
 	public ModelAndView mostrarLote(@ModelAttribute("lote")LoteModelo loteModelo) {
 		ModelAndView mv = new ModelAndView();
